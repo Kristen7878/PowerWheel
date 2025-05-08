@@ -14,7 +14,9 @@ import DataSaving from "./DataSaving";
 import Download from "./Download";
 import Login from "./Login";
 
-  
+import tinycolor from 'tinycolor2';
+
+
 
 // 每层环的厚度，5层，每个扇形都有 5 层
 // Ring thickness for each of the 5 levels — each sector has 5 concentric layers
@@ -225,7 +227,7 @@ if (editingDescriptions) {
         <text x={center} y={center + 10} fontSize="18" fontWeight="bold" textAnchor="middle">POWER</text>
         <text x={center} y={center + 30} fontSize="18" fontWeight="bold" textAnchor="middle">WHEEL</text>
   
-        {/* 旋转整个图形 // Rotate the entire wheel */}
+        {/* 旋转整个图形 // Rotate e entire wheel */}
         <g transform = {`rotate(${rotation},${center}, ${center})`}> 
         
         {/* 悬停显示 Tooltip // Render tooltip on hover */}
@@ -241,10 +243,11 @@ if (editingDescriptions) {
             const isSelected = colorMap[key] === level; // 是否为用户选择的等级// Whether it is the level selected by the user
             const category = sector.levels[4];
             const baseColor = categoryColors[category] || sector.color;
-            const fillColor = isSelected
-            ? "#00c853" // 固定高亮色// Fix the highlight color
-             : (j === 4 ? "#fff" : withOpacity(baseColor, fillOpacity));
- 
+            const highlightColor = tinycolor(baseColor).darken(10).toString(); // 提亮 20%
+
+            // 固定高亮色// Fix the highlight color
+            
+             const fillColor = isSelected ? highlightColor : (j === 4 ? "#fff" : withOpacity(baseColor, fillOpacity));
             //const midAngle = (startAngle + endAngle) / 2; // 放文字时的中心角度
             const labelRadius = innerRadius + ringWidths[j]*3/4; // 文字贴合的中线
             //const labelPos = polarToCartesian(midAngle, labelRadius); // 得到放文字的坐标
@@ -308,7 +311,7 @@ if (editingDescriptions) {
             </defs>
 
               {lines.map((line, idx) => (
-                <text fontSize="10" fill="#000" key={idx}>
+                <text fontWeight= ""    fontFamily="Tahoma, sans-serif;" letterSpacing="0.5" fontSize="11" fill={isSelected ? "#fff" : "#000"} key={idx}>
                   <textPath
                     href={`#arc-path-${i}-${j}-${idx}`}
                     startOffset="50%"

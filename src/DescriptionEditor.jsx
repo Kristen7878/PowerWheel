@@ -15,7 +15,7 @@ export default function DescriptionEditor({ descriptions, setDescriptions, onDon
         <div key={key} style={{ marginBottom: "20px", borderBottom: "1px solid #ccc" }}>
           <h3>{key}</h3>
           <label>
-            Title:
+            <span>Title:</span>
             <input
               type="text"
               value={value.title}
@@ -24,7 +24,7 @@ export default function DescriptionEditor({ descriptions, setDescriptions, onDon
           </label>
           <br />
           <label>
-            Description:
+            <span>Description:</span>
             <textarea
               value={value.description}
               onChange={(e) => handleChange(key, "description", e.target.value)}
