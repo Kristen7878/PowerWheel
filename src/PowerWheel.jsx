@@ -322,16 +322,7 @@ if (editingDescriptions) {
                 </text>
               ))}
   
-                {/* 注释的是与弧形文字 */}
-                {/*lines.length > 0 && (
-                  <text fontSize="9" fill="#000" textAnchor="middle" x={labelPos.x} y={labelPos.y}>
-                    {lines.map((line, idx) => (
-                      <tspan key={idx} x={labelPos.x} dy={idx === 0 ? "0" : "1.1em"}>
-                        {line}
-                      </tspan>
-                    ))}
-                  </text>
-                )*/}
+                
 
 
               </g>
