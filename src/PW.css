@@ -22,3 +22,7 @@ svg {
     gap: 1rem;
     flex: 1;
   }
+  .powerwheel-container {
+    background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+  }
+  

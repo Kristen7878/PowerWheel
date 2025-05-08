@@ -4,13 +4,16 @@ import './PW.css';
 import RotateControls from "./RotateControls";
 import { breakText } from './Function';
 import ArcSegment from './ArcSegment';
-import tooltipInfoMap from "./Descriptions";
+import DefaultDescriptions from "./DefaultDescriptions";
+import DescriptionEditor from "./DescriptionEditor";
 import { SectorForm } from "./ArcSegment";
 import SectorEditor from "./Edited";
 import defaultsectors from "./Defaultsectors";
 import "./ArcSegment.css"
 import DataSaving from "./DataSaving";
 import Download from "./Download";
+import Login from "./Login";
+
   
 
 // 每层环的厚度，5层，每个扇形都有 5 层
@@ -56,9 +59,17 @@ function getCategoryColor(category) {
 
 export default function PowerWheel() 
 {
+  //login
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showLoginForm, setShowLoginForm] = useState(false);
+  
   
   const [sectors, setSectors] = useState(defaultsectors);
   const [editing, setEditing] = useState(false);
+
+  const [descriptions, setDescriptions] = useState(DefaultDescriptions);
+  const [editingDescriptions, setEditingDescriptions] = useState(false);
+
   const [tooltipText, setTooltipText] = useState({ title: "", description: "" }); // Tooltip 的文字内容 // Tooltip text content
   const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0 });                   // Tooltip 的位置 // Tooltip position
   const [showTooltip, setShowTooltip] = useState(false);                         // 是否显示 Tooltip // Whether to show tooltip
@@ -111,17 +122,97 @@ if (editing) {
     </div>
   );
 }
+if (editingDescriptions) {
+  return (
+    <div className="powerwheel-container" style={{ padding: "20px" }}>
+      <DescriptionEditor
+        descriptions={descriptions}
+        setDescriptions={setDescriptions}
+        onDone={() => setEditingDescriptions(false)}
+      />
+    </div>
+  );
+}
 
   return (
     <div className="powerwheel-container" >
 
-      <div className="button-bar">
-      {/* 编辑在这里！！！Edited is */}
-       <button className="button" onClick={() => setEditing(true)}>Edit Sectors</button>
-      {/* 导入导出编辑后的数据 */}
-      <DataSaving sectors ={sectors} setSectors={setSectors}/>
+<div className="button-bar">
 
-      <Download />
+{/* 编辑在这里！！！Edited is here！！！*/}
+{!isLoggedIn ? (
+  <>
+    {!showLoginForm && (
+      <button className="button" onClick={() => setShowLoginForm(true)}>
+        Login
+      </button>
+    )}
+
+    {showLoginForm && (
+      <div className="modal-overlay">
+        <div className="modal-content">
+          <Login
+            onLogin={() => {
+              setIsLoggedIn(true);
+              setShowLoginForm(false);
+            }}
+          />
+          <button
+            className="button"
+            onClick={() => setShowLoginForm(false)}
+            style={{ marginTop: '10px' }}
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    )}
+  </>
+) : (
+  <>
+    <button className="button" onClick={() => setEditing(true)}>
+      Edit Sectors
+    </button>
+    {/* Edit description */}
+    {/* 编辑描述*/}
+    <button className="button" onClick={() => setEditingDescriptions(true)}>
+      Edit Descriptions
+    </button>
+  </>
+)}
+
+
+
+{/* Import and export the edited data */}
+{/* 导入导出编辑后的数据 */}
+<DataSaving sectors={sectors} setSectors={setSectors} />
+
+
+<Download />
+</div>
+
+
+      <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
+
+
+      {/* Clear the selection record */}
+      {/* 清空选择记录 */}
+      <button className="button" onClick={() => {
+        if (window.confirm("确定要清除所有高亮选择吗？")) {
+          setColorMap({});
+        }
+      }}>
+        Reset Selection
+      </button>
+
+      {/* Restore the wheel structure */}
+      {/* 恢复轮子结构 */}
+      <button className="button" onClick={() => {
+          setSectors(defaultsectors);
+          setDescriptions(DefaultDescriptions);
+          setColorMap({});
+        }}>Restore Default</button>
+
       </div>
 
       {/* 控制旋转按钮 // Rotate control buttons */}
@@ -174,11 +265,16 @@ if (editing) {
                   fill={fillColor}
                   onMouseEnter={() => {
                     setTooltipText({
-                      title: tooltipInfoMap[sector.label]?.title || "",
-                      description: tooltipInfoMap[sector.label]?.description || ""
+                      title: descriptions[sector.label]?.title || "",
+                      description: descriptions[sector.label]?.description || ""
                     });
-                    setShowTooltip(true);
-                  }}
+                    if(j >= 4){
+                      setShowTooltip(true); 
+                    } else{
+                      setShowTooltip(false); 
+                    }
+                                      
+                }}
                   onMouseLeave={() => setShowTooltip(false)}
                   onMouseMove={(e) => setTooltipPos({ x: e.clientX - 10, y: e.clientY - 20 })}
                   onClick={() => {
@@ -245,7 +341,7 @@ if (editing) {
       <line 
           x1={center + 60} 
           y1={center} 
-          x2={center + 500} 
+          x2={center + 420} 
           y2={center} 
           stroke="white" 
           strokeWidth="12" 
@@ -267,6 +363,7 @@ if (editing) {
       </div>
   
       {/* 悬停显示 Tooltip // Render tooltip on hover */}
+      
       {showTooltip && (
         <div
         className="tooltip"

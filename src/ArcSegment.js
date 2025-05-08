@@ -32,7 +32,9 @@ export default function ArcSegment({
   const startInner = toCartesian(endAngle, innerRadius); // 内弧起点 // Inner arc start
   const endInner = toCartesian(startAngle, innerRadius); // 内弧终点 // Inner arc end
 
-  const largeArc = endAngle - startAngle > 180 ? 1 : 0; // 判断是否是大弧 // Determine if large arc
+  const angleDiff = (endAngle - startAngle + 360) % 360;
+  const largeArc = angleDiff > 180 ? 1 : 0;
+  // 判断是否是大弧 // Determine if large arc
 
   // 构造 SVG 路径数据 // Construct SVG path string
   const pathData = [

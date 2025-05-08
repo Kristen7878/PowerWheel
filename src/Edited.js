@@ -26,33 +26,7 @@ export default function SectorEditor({ sectors, setSectors, onDone }) {
     // Set the updated sectors state
   };
 
-  // 处理上传图片的函数
-  // Function to handle image upload
-  // const ImageUpload = (sectorIndex, file) => {
-  //   const updated = [...sectors]; // 创建 sectors 的副本
-  //   // Create a copy of sectors
-  //   updated[sectorIndex].image = file; // 为指定 sector 添加图片
-  //   // Add the image to the specified sector
-  //   setSectors(updated); // 更新 sectors 状态
-  //   // Set the updated sectors state
-  // };
-
-  // 处理上传图片，并转换为 Base64 字符串后保存
-  const ImageUpload = (sectorIndex, file) => {
-    const reader = new FileReader();
-
-    reader.onload = (e) => {
-      const base64 = e.target.result; // 获取 base64 字符串
-      const updated = [...sectors];
-      updated[sectorIndex].imageBase64 = base64; // 存入新字段
-      setSectors(updated); // 更新 sectors
-    };
-
-    if (file) {
-      reader.readAsDataURL(file); // 转成 base64
-    }
-  };
-
+  //
   // 添加一个新的 sector
   // Function to add a new sector
   const addSector = () => {
@@ -109,28 +83,13 @@ export default function SectorEditor({ sectors, setSectors, onDone }) {
               <div key={levelIndex}>
                 {/* 如果是 level 1，显示图片上传框 */}
                 {/* If level is 1, show image upload input */}
-                {levelIndex === 1 && (
+                {levelIndex === 0 && (
                   <div>
                     <input
                       type="file"
                       accept="image/*"
-                      onChange={(e) => ImageUpload(idx, e.target.files[0])} // 上传图片时更新
                       // Update when an image is uploaded
                     />
-                    {/* 如果该 sector 有图片，显示图片预览 */}
-                    {/* If there is an image, show a preview */}
-                    {sector.image && (
-                      <img
-                        // src={URL.createObjectURL(sector.image)}
-                        src={sector.imageBase64}
-                        alt="preview"
-                        style={{
-                          maxWidth: "100px",
-                          maxHeight: "100px",
-                          marginTop: "10px",
-                        }}
-                      />
-                    )}
                   </div>
                 )}
                 {/* 如果是 level 4，显示下拉选择框 */}
@@ -189,7 +148,7 @@ export default function SectorEditor({ sectors, setSectors, onDone }) {
       <button
         className="button"
         onClick={onDone}
-        style={{ marginLeft: "10px" }}
+        style={{ marginLeft: "200px" }}
       >
         Save and Return
       </button>

@@ -7,11 +7,11 @@ const defaultsectors = [
   {
     label: "Gender",
     levels: [
-      "",
+      "12",
       "Trans/ Intersex/ Non-binary",
       "Cis-woman",
       "Cis-man (gay)",
-      "",
+      "12",
       "Gender",
     ],
     color: "#25aab0",
@@ -23,7 +23,7 @@ const defaultsectors = [
       "Lesbian, Bi, Pan, Asexual",
       "Gay man",
       "Bisexual",
-      "",
+      "12",
       "Sexuality",
     ],
     color: "#25aab0",
