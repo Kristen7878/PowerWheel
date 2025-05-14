@@ -7,7 +7,7 @@ const defaultsectors = [
   {
     label: "Gender",
     levels: [
-      "",
+      "IM",
       "Trans/ Intersex/ Non-binary",
       "Cis-woman",
       "Cis-man (gay)",
@@ -19,7 +19,7 @@ const defaultsectors = [
   {
     label: "Sexuality",
     levels: [
-      "",
+      "IM",
       "Lesbian, Bi, Pan, Asexual",
       "Gay man",
       "Bisexual",
@@ -30,18 +30,18 @@ const defaultsectors = [
   },
   {
     label: "Skin Colour",
-    levels: ["", "Dark", "Brown", "Olive", "", "Skin Colour"],
+    levels: ["IM", "Dark", "Brown", "Olive", "", "Skin Colour"],
     color: "#25aab0",
   },
   {
     label: "Race",
-    levels: ["", "Indigenous", "Black", "Asian", "Race", "Race"],
+    levels: ["IM", "Indigenous", "Black", "Asian", "Race", "Race"],
     color: "#25aab0",
   },
   {
     label: "Neurodiversity",
     levels: [
-      "",
+      "IM",
       "Significant difference",
       "Moderate",
       "Mild",
@@ -53,7 +53,7 @@ const defaultsectors = [
   {
     label: "Mental Health",
     levels: [
-      "",
+      "IM",
       "Vulnerable",
       "Unstable",
       "Occasionally unwell",
@@ -64,18 +64,18 @@ const defaultsectors = [
   },
   {
     label: "Body Size",
-    levels: ["", "Large", "Above average", "Average", " ", "Body Size"],
+    levels: ["IM", "Large", "Above average", "Average", " ", "Body Size"],
     color: "#a4133c",
   },
   {
     label: "Formal Education",
-    levels: ["", "None", "Primary", "Secondary", " Race", "Formal Education"],
+    levels: ["IM", "None", "Primary", "Secondary", " Race", "Formal Education"],
     color: "#81c784",
   },
   {
     label: "Education & Career",
     levels: [
-      "",
+      "IM",
       "Unemployed",
       "Casual/ hands-on",
       "Semi-professional",
@@ -87,7 +87,7 @@ const defaultsectors = [
   {
     label: "Type of Work",
     levels: [
-      "",
+      "IM",
       "Non-paid care",
       "Hands-on",
       "Support role",
@@ -98,23 +98,23 @@ const defaultsectors = [
   },
   {
     label: "Career Stage",
-    levels: ["", "Early", "Mid", "Experienced", "Race", "Career Stage"],
+    levels: ["IM", "Early", "Mid", "Experienced", "Race", "Career Stage"],
     color: "#81c784",
   },
   {
     label: "Access to Tech",
-    levels: ["", "No access", "Limited", "Medium", " Race", "Access to Tech"],
+    levels: ["IM", "No access", "Limited", "Medium", " Race", "Access to Tech"],
     color: "#d96d50",
   },
   {
     label: "Housing",
-    levels: ["", "Homeless", "Temporary", "Renting", " ", "Housing"],
+    levels: ["IM", "Homeless", "Temporary", "Renting", " ", "Housing"],
     color: "#c05050",
   },
   {
     label: "Language & Culture",
     levels: [
-      "",
+      "IM",
       "Non-English",
       "Limited English",
       "Fluent (non-native)",
@@ -126,7 +126,7 @@ const defaultsectors = [
   {
     label: "Citizenship",
     levels: [
-      "",
+      "IM",
       "No visa",
       "Temporary visa",
       "Permanent resident",
@@ -138,7 +138,7 @@ const defaultsectors = [
   {
     label: "Religion & Culture",
     levels: [
-      "",
+      "IM",
       "Not widely accepted",
       "Minority",
       "Traditionally respected",
@@ -150,7 +150,7 @@ const defaultsectors = [
   {
     label: "Caregiving Duties",
     levels: [
-      "",
+      "IM",
       "Sole care",
       "Shared care",
       "Occasional support",
@@ -162,7 +162,7 @@ const defaultsectors = [
   {
     label: "Health of Carers/ Trauma/ Addiction",
     levels: [
-      "",
+      "IM",
       "Ongoing severe",
       "Moderate ongoing",
       "Occasional",

@@ -160,7 +160,7 @@ if (editingDescriptions) {
             }}
           />
           <button
-            className="button"
+            className=""
             onClick={() => setShowLoginForm(false)}
             style={{ marginTop: '10px' }}
           >

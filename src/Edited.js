@@ -140,6 +140,14 @@ export default function SectorEditor({ sectors, setSectors, onDone }) {
       ))}
       {/* 添加新 sector 的按钮 */}
       {/* Button to add a new sector */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          marginTop: "40px", // 与表单内容拉开距离
+          padding: "0 20px", // 两侧留点空隙
+        }}
+      ></div>
       <button className="button" onClick={addSector}>
         Add Sector
       </button>
@@ -148,7 +156,7 @@ export default function SectorEditor({ sectors, setSectors, onDone }) {
       <button
         className="button"
         onClick={onDone}
-        style={{ marginLeft: "200px" }}
+        style={{ marginLeft: "20px" }}
       >
         Save and Return
       </button>

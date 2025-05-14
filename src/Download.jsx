@@ -15,7 +15,9 @@ export default function Download() {
     return (
         /* --- BUTTONS --- */
         <div className="buttons">
-            <button className= "button " onClick={downloadWheel}>Download My Wheel</button>
+            <button className= "button " 
+               
+            onClick={downloadWheel}>Download My Wheel</button>
         </div>
     );
 

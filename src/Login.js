@@ -37,7 +37,7 @@ export default function Login({ onLogin }) {
           style={{ marginBottom: "10px", padding: "8px" }}
         />
       </div>
-      <button onClick={LoginSubmit} className="custom-button">
+      <button onClick={LoginSubmit} className="button">
         Login
       </button>
       {error && <p style={{ color: "red" }}>{error}</p>}

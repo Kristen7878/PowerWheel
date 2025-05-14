@@ -1,4 +1,4 @@
-/*.button {
+.button {
   position: relative;
   font-family: 'Lato', sans-serif;
   font-size: 16px;
@@ -7,7 +7,7 @@
   text-transform: uppercase;
   letter-spacing: 0.1em;
   padding: 12px 28px;
-  background: transparent;
+  background-color: #bea17d;
   border: none;
   border-radius: 6px;
   cursor: pointer;
@@ -25,17 +25,17 @@
   z-index: -1;
 }
 
-/* 动画气泡1 
+
 .button::before {
   width: 15%;
   height: 40%;
-  background-color: #fefa00;
+  background-color: #efd1ad;
   top: -0.75rem;
   left: 0.5rem;
   animation: topBubble 2s infinite alternate;
 }
 
-/* 动画气泡2 
+ 
 .button::after {
   width: 15%;
   height: 40%;
@@ -80,12 +80,12 @@
     transform: translate(0rem, 0);
   }
 }
-*/
+/*
 .button {
   --color: #ffffff;
   --color-hover: #ffffff;
-  --background: #FFA726;           /* 主背景色（橘） */
-  --background-hover: #FFD54F;     /* 悬停背景色（亮黄） */
+  --background: #FFA726;           
+  --background-hover: #FFD54F;     
   --hover-back: #FFA726;
   --hover-front: #FFD54F;
 
@@ -139,3 +139,4 @@
   transform: scale(0.95);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
+*/
