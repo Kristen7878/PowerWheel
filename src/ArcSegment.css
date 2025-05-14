@@ -26,19 +26,8 @@
   .tooltip-description {
     font-size: 12px;
   }
-  .sector-form {
-    position: absolute;
-    top: 100px;
-    left: 100px;
-    background: #fff;
-    border: 1px solid #aaa;
-    padding: 16px;
-    border-radius: 6px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    z-index: 20;
-  }
   
- 
+ /*表单*/
 .sector-form {
   position: absolute;
   top: 50%;
@@ -149,7 +138,7 @@
 }
 
 .basic-grey .button {
-  background: #E27575;
+  background: #75e2bf;
   border: none;
   padding: 10px 25px;
   color: #FFF;
@@ -186,4 +175,46 @@
   width: 300px;
   text-align: center;
   z-index: 1001;
+}
+/* 重置一些样式 */
+.btn-87,
+.btn-87 * {
+  border: 0 solid;
+  box-sizing: border-box;
+}
+
+/* .btn-container 使父容器支持 Flexbox 布局 */
+.btn-container {
+  display: flex;
+  justify-content: center;  /* 水平居中 */
+  align-items: center;  /* 垂直居中 */
+  gap: 1rem;  /* 两个按钮之间的间距 */
+  margin-top: 2rem; /* 顶部间距，可以根据需要调整 */
+  height: 10vh;  /* 确保容器有足够的高度 */
+}
+
+/* 按钮样式 */
+.btn-87 {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: button;
+  background-color: rgb(233, 197, 130);  /* 背景颜色 */
+  color: #000;  /* 文字颜色 */
+  cursor: pointer;
+  text-align: center; /* 文本居中 */
+  width: 80px;  /* 设置按钮的宽度 */
+  height: 80px; /* 设置按钮的高度 */
+  border-radius: 50%; /* 使按钮变圆形 */
+  display: flex;
+  justify-content: center;  /* 水平居中 */
+  align-items: center; /* 垂直居中 */
+  font-weight: bold;  /* 文字加粗 */
+  font-size: 16px;  /* 字体大小 */
+}
+.btn-87:active {
+  background-color: darkorange;  /* 按钮被点击时背景变暗 */
+  transform: scale(0.95);  /* 点击时按钮缩小 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  /* 按下时添加阴影 */
+}
+.btn-87:hover {
+  background-color: darkorange;  /* 鼠标悬停时按钮背景变暗 */
 }

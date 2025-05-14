@@ -1,0 +1,141 @@
+/*.button {
+  position: relative;
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #111111;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 12px 28px;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  overflow: hidden;
+  z-index: 1;
+  transition: color 0.3s ease;
+}
+
+.button::before,
+.button::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  z-index: -1;
+}
+
+/* 动画气泡1 
+.button::before {
+  width: 15%;
+  height: 40%;
+  background-color: #fefa00;
+  top: -0.75rem;
+  left: 0.5rem;
+  animation: topBubble 2s infinite alternate;
+}
+
+/* 动画气泡2 
+.button::after {
+  width: 15%;
+  height: 40%;
+  background-color: #877c00;
+  top: 3rem;
+  left: 13rem;
+  animation: bottomBubble 2s 0.5s infinite alternate;
+}
+
+.button:hover {
+  color: white;
+}
+
+.button:hover::before,
+.button:hover::after {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  top: 0;
+  left: 0;
+  animation: none;
+}
+
+.button:active {
+  transform: scale(0.97);
+}
+
+@keyframes topBubble {
+  from {
+    transform: translate(0rem, 0);
+  }
+  to {
+    transform: translate(0rem, 3.5rem);
+  }
+}
+
+@keyframes bottomBubble {
+  from {
+    transform: translate(-11.5rem, 0);
+  }
+  to {
+    transform: translate(0rem, 0);
+  }
+}
+*/
+.button {
+  --color: #ffffff;
+  --color-hover: #ffffff;
+  --background: #FFA726;           /* 主背景色（橘） */
+  --background-hover: #FFD54F;     /* 悬停背景色（亮黄） */
+  --hover-back: #FFA726;
+  --hover-front: #FFD54F;
+
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  background: var(--background);
+  color: var(--color);
+  transition: all 0.3s ease;
+  z-index: 0;
+}
+
+.button::before,
+.button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 120%;
+  height: 100%;
+  background: var(--hover-back);
+  z-index: -1;
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+
+.button::after {
+  background: var(--hover-front);
+  transition-delay: 0.2s;
+}
+
+.button:hover::before {
+  transform: translateX(0);
+}
+
+.button:hover::after {
+  transform: translateX(0);
+}
+
+.button:hover {
+  color: var(--color-hover);
+  transform: scale(1.05);
+}
+
+.button:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}

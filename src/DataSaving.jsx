@@ -56,8 +56,21 @@ export default function DataSaving({ sectors, setSectors }) {
     // </div>
     
     <div className="data-buttons">
-      <button onClick={DownloadJson}>Download JSON</button>
-      <label className="upload-label">
+      <button className= "button " 
+      style={{
+    position: "fixed",
+    bottom: "60px",
+    right: "20px",
+    zIndex: 1000 // 避免被其他元素遮挡
+  }}
+  onClick={DownloadJson}>Download JSON</button>
+      <label className= "button "
+      style={{
+        position: "fixed",
+        bottom: "10px",
+        right: "20px",
+        zIndex: 1000 // 避免被其他元素遮挡
+      }}>
        Upload JSON
         <input
           type="file"

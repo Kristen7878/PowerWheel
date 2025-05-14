@@ -13,7 +13,7 @@ import "./ArcSegment.css"
 import DataSaving from "./DataSaving";
 import Download from "./Download";
 import Login from "./Login";
-
+import './BB.css';
 import tinycolor from 'tinycolor2';
 
 
@@ -172,14 +172,11 @@ if (editingDescriptions) {
   </>
 ) : (
   <>
-    <button className="button" onClick={() => setEditing(true)}>
-      Edit Sectors
-    </button>
-    {/* Edit description */}
-    {/* 编辑描述*/}
-    <button className="button" onClick={() => setEditingDescriptions(true)}>
-      Edit Descriptions
-    </button>
+    <>
+    <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+            <button className="button" onClick={() => setEditing(true)}>Edit Sectors</button>
+            <button className="button" onClick={() => setEditingDescriptions(true)}>Edit Descriptions</button>
+            </div> </>
   </>
 )}
 
@@ -199,8 +196,8 @@ if (editingDescriptions) {
 
       {/* Clear the selection record */}
       {/* 清空选择记录 */}
-      <button className="button" onClick={() => {
-        if (window.confirm("确定要清除所有高亮选择吗？")) {
+      <button className="button"style={{ marginRight: "16px" }} onClick={() => {
+        if (window.confirm("Are you sure")) {
           setColorMap({});
         }
       }}>
