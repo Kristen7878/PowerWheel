@@ -2,7 +2,7 @@ import React from "react";
 
 export default function DataSaving({ sectors, setSectors }) {
 
-  //下载json文件
+  //DownLoad json file
   const DownloadJson = () => {
     const dataString = JSON.stringify(sectors, null, 2);
     const blob = new Blob([dataString], { type: "json"});
@@ -17,7 +17,7 @@ export default function DataSaving({ sectors, setSectors }) {
 
   }
 
-  //上传json文件
+  //UpLoad json file
   const UploadJson = (e) => {
 
     const file = e.target.files[0];
@@ -30,12 +30,12 @@ export default function DataSaving({ sectors, setSectors }) {
         const importedData = JSON.parse(event.target.result);
         if (Array.isArray(importedData)) {
           setSectors(importedData);
-          alert("导入成功！");
+          alert("Successful!");
         } else {
-          alert("文件格式错误！");
+          alert("Erro");
         }
       } catch (error) {
-        alert("读取文件失败！");
+        alert("Failed");
       }
     };
     reader.readAsText(file);
@@ -61,7 +61,7 @@ export default function DataSaving({ sectors, setSectors }) {
     position: "fixed",
     bottom: "60px",
     right: "20px",
-    zIndex: 1000 // 避免被其他元素遮挡
+    zIndex: 1000 
   }}
   onClick={DownloadJson}>Download JSON</button>
       <label className= "button "
@@ -69,7 +69,7 @@ export default function DataSaving({ sectors, setSectors }) {
         position: "fixed",
         bottom: "10px",
         right: "20px",
-        zIndex: 1000 // 避免被其他元素遮挡
+        zIndex: 1000 
       }}>
        Upload JSON
         <input

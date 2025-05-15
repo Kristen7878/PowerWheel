@@ -1,8 +1,7 @@
 const tooltipInfoMap = {
   Gender: {
     title: "Gender",
-    description:
-      "This dimension reflects societal gender roles and identities.",
+    description: "Here ia a demo",
   },
   Sexuality: {
     title: "Sexuality",

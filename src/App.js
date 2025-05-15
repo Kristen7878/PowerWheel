@@ -16,7 +16,7 @@ function App() {
         style={{
           fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
           fontSize: "36px",
-          color: "#8B7355",
+          color: "#8B7355s",
           letterSpacing: "1px",
           marginBottom: "10px",
           textShadow: "2px 2px 4px rgba(0,0,0,0.1)",

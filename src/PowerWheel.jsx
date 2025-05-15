@@ -1,4 +1,4 @@
-// 引入 React
+
 import React, { useState } from "react";
 import './PW.css';
 import RotateControls from "./RotateControls";
@@ -18,14 +18,13 @@ import tinycolor from 'tinycolor2';
 
 
 
-// 每层环的厚度，5层，每个扇形都有 5 层
 // Ring thickness for each of the 5 levels — each sector has 5 concentric layers
 const ringWidths = [60, 60, 60, 60, 60,60];
-const center = 500;          // 圆心位置 (x, y)// Center of the circle (x, y)
-const baseRadius = 60;       // 最内圈的起始半径// Base radius for the innermost ring
+const center = 500;          // Center of the circle (x, y)
+const baseRadius = 60;       // Base radius for the innermost ring
 
 
-// 工具函数：颜色添加透明度（用于区分层级）
+
 // Utility function: add opacity to hex color for level distinction
 function withOpacity(hex, opacity) {
   const r = parseInt(hex.substring(1, 3), 16);
@@ -34,7 +33,7 @@ function withOpacity(hex, opacity) {
   return `rgba(${r}, ${g}, ${b}, ${opacity})`;
 }
 
-// 工具函数：将极坐标（角度 + 半径）转换为 SVG 二维坐标
+
 // Utility function: convert polar coordinates (angle + radius) to SVG 2D coordinates
 function polarToCartesian(angleDeg, r) {
   const angleRad = (angleDeg - 90) * (Math.PI / 180);
@@ -86,16 +85,14 @@ export default function PowerWheel()
 
 
 
-  // 提交表单时的处理函数 // Function to handle form submission
+  // Function to handle form submission
   const handleFormSubmit = (level) => {                                         
     if (!selectedSector) return;
     const key = selectedSector.sector.label;//Like Gender-2
     setColorMap((previousColorMap) => {
-      // 复制一份旧的颜色Make a copy of the old color
+      // Make a copy of the old color
       const updatedColorMap = { ...previousColorMap };
-      // 更新或新增这一块扇形的选择记录Update or add the selection record of this sector
       updatedColorMap[key] = level;
-      // 返回新的状态Return to a new state
       return updatedColorMap;
     });
     
@@ -105,7 +102,7 @@ export default function PowerWheel()
   };
   
 
-// 表单重置功能 // Reset form 
+// Reset form 
 function  handleResetForm ()
 {                                              
  if (!selectedSector) return;
@@ -141,7 +138,7 @@ if (editingDescriptions) {
 
 <div className="button-bar">
 
-{/* 编辑在这里！！！Edited is here！！！*/}
+{/*Edited is here！！！*/}
 {!isLoggedIn ? (
   <>
     {!showLoginForm && (
@@ -183,7 +180,6 @@ if (editingDescriptions) {
 
 
 {/* Import and export the edited data */}
-{/* 导入导出编辑后的数据 */}
 <DataSaving sectors={sectors} setSectors={setSectors} />
 
 
@@ -195,7 +191,6 @@ if (editingDescriptions) {
 
 
       {/* Clear the selection record */}
-      {/* 清空选择记录 */}
       <button className="button"style={{ marginRight: "16px" }} onClick={() => {
         if (window.confirm("Are you sure")) {
           setColorMap({});
@@ -205,7 +200,6 @@ if (editingDescriptions) {
       </button>
 
       {/* Restore the wheel structure */}
-      {/* 恢复轮子结构 */}
       <button className="button" onClick={() => {
           setSectors(defaultsectors);
           setDescriptions(DefaultDescriptions);
@@ -214,20 +208,20 @@ if (editingDescriptions) {
 
       </div>
 
-      {/* 控制旋转按钮 // Rotate control buttons */}
+      {/* Rotate control buttons */}
     <RotateControls rotation={rotation} setRotation={setRotation} />
     <div id="wheel-container">
       <svg width="100%" height="100%" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid meet">
-        {/* 最中心的空心白圆和文字标识 // Center white circle and "Power Wheel" text */}
+        {/*Center white circle and "Power Wheel" text */}
         <circle cx={center} cy={center} r={baseRadius - 5} fill="#fff" />
         <text x={center} y={center - 10} fontSize="18" fontWeight="bold" textAnchor="middle">THE</text>
         <text x={center} y={center + 10} fontSize="18" fontWeight="bold" textAnchor="middle">POWER</text>
         <text x={center} y={center + 30} fontSize="18" fontWeight="bold" textAnchor="middle">WHEEL</text>
   
-        {/* 旋转整个图形 // Rotate e entire wheel */}
+        {/* Rotate e entire wheel */}
         <g transform = {`rotate(${rotation},${center}, ${center})`}> 
         
-        {/* 悬停显示 Tooltip // Render tooltip on hover */}
+        {/* Render tooltip on hover */}
         {groupedSectors.map((sector, i) => {
           const startAngle = i * anglePerSector;
           const endAngle = (i + 1) * anglePerSector;
@@ -235,25 +229,23 @@ if (editingDescriptions) {
           return sector.levels.map((level, j) => {
             const innerRadius = baseRadius + j * ringWidths[j];
             const outerRadius = innerRadius + ringWidths[j];
-            const fillOpacity = 0.3 + (j * 0.12); // 透明度diaphaneity
-            const key = sector.label;  // 每个扇形的唯一标识The unique identification of each sector
-            const isSelected = colorMap[key] === level; // 是否为用户选择的等级// Whether it is the level selected by the user
+            const fillOpacity = 0.3 + (j * 0.12); 
+            const key = sector.label;  // he unique identification of each sector
+            const isSelected = colorMap[key] === level; //  Whether it is the level selected by the user
             const category = sector.levels[4];
             const baseColor = categoryColors[category] || sector.color;
-            const highlightColor = tinycolor(baseColor).darken(10).toString(); // 提亮 20%
+            const highlightColor = tinycolor(baseColor).darken(10).toString(); //  20%
 
-            // 固定高亮色// Fix the highlight color
+            // Fix the highlight color
             
              const fillColor = isSelected ? highlightColor : (j === 4 ? "#fff" : withOpacity(baseColor, fillOpacity));
-            //const midAngle = (startAngle + endAngle) / 2; // 放文字时的中心角度
-            const labelRadius = innerRadius + ringWidths[j]*3/4; // 文字贴合的中线
-            //const labelPos = polarToCartesian(midAngle, labelRadius); // 得到放文字的坐标
+            const labelRadius = innerRadius + ringWidths[j]*3/4; 
 
             const angleRange = endAngle - startAngle;
             const startTextAngle = startAngle + 5;
             const endTextAngle = endAngle - 5;
   
-            const lines = breakText(level, 1); // 长文本自动换行// Long text automatically breaks lines
+            const lines = breakText(level, 1);// Long text automatically breaks lines
             //Here!!!Here!!
             return (
               <g key={`${sector.label}-${j}`}>{/*Like Gender-2 */}
@@ -278,8 +270,8 @@ if (editingDescriptions) {
                   onMouseLeave={() => setShowTooltip(false)}
                   onMouseMove={(e) => setTooltipPos({ x: e.clientX - 10, y: e.clientY - 20 })}
                   onClick={() => {
-                    if (j >= 1 && j <= 3) // 只允许点击第2~4层Only the 2nd to 4th floors are allowed to be clicked
-                      {setSelectedSector({ sector, levelIndex: j });}//记录了用户点了哪里// Where did the user click
+                    if (j >= 1 && j <= 3) // Only the 2nd to 4th floors are allowed to be clicked
+                      {setSelectedSector({ sector, levelIndex: j });}// Where did the user click
                     
                   }}
                 />
@@ -294,7 +286,6 @@ if (editingDescriptions) {
 
                 
                 return(
-                // 定义弧形路径用于文字贴合
                 <path
                 key={idx}
                 id={`arc-path-${i}-${j}-${idx}`}
@@ -328,7 +319,7 @@ if (editingDescriptions) {
         })}
         </g>
 
-      {/* 静态右侧横线和文本 */}
+      {/* Static right horizontal lines and text */}
       <line 
           x1={center + 60} 
           y1={center} 
@@ -353,7 +344,7 @@ if (editingDescriptions) {
       </svg>
       </div>
   
-      {/* 悬停显示 Tooltip // Render tooltip on hover */}
+      {/*  Tooltip // Render tooltip on hover */}
       
       {showTooltip && (
         <div
@@ -368,8 +359,8 @@ if (editingDescriptions) {
         </div>
       )}
 
-    {/* 弹出表单（扇形被点击时） // Show form popup when a sector is clicked */}
-    {/* 只有当 selectedSector 不是 null//Only if selectedSector is not null*/}
+    {/* Show form popup when a sector is clicked */}
+    {/* Only if selectedSector is not null*/}
     {selectedSector && (
       <SectorForm
         selectedSector={selectedSector}
