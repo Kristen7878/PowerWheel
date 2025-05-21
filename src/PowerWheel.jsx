@@ -71,16 +71,16 @@ export default function PowerWheel()
   const [descriptions, setDescriptions] = useState(DefaultDescriptions);
   const [editingDescriptions, setEditingDescriptions] = useState(false);
 
-  const [tooltipText, setTooltipText] = useState({ title: "", description: "" }); // Tooltip 的文字内容 // Tooltip text content
-  const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0 });                   // Tooltip 的位置 // Tooltip position
-  const [showTooltip, setShowTooltip] = useState(false);                         // 是否显示 Tooltip // Whether to show tooltip
+  const [tooltipText, setTooltipText] = useState({ title: "", description: "" });  // Tooltip text content
+  const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0 });                   // Tooltip position
+  const [showTooltip, setShowTooltip] = useState(false);                         // Whether to show tooltip
   const groupedSectors = [...sectors].sort((a, b) =>
     (a.levels[4] || "").localeCompare(b.levels[4] || "") )
-  const anglePerSector = 360 / groupedSectors.length;                                  // 每个维度所占的角度范围 // Angle span per dimension
-  const [rotation, setRotation] = useState(0);                                   // 当前旋转角度 // Current wheel rotation
-  const [selectedSector, setSelectedSector] = useState(null);                    // 当前点击的扇形 // Currently selected sector
-  const [selectedLevel, setSelectedLevel] = useState("");                        // 当前选择的等级 // Selected level in form
-  const [colorMap, setColorMap] = useState({});                                  // 储存用户已经选择的扇形颜色记录 // Record of selected sectors/colors
+  const anglePerSector = 360 / groupedSectors.length;                             // Angle span per dimension
+  const [rotation, setRotation] = useState(0);                                   // Current wheel rotation
+  const [selectedSector, setSelectedSector] = useState(null);                    // Currently selected sector
+  const [selectedLevel, setSelectedLevel] = useState("");                       // Selected level in form
+  const [colorMap, setColorMap] = useState({});                                   // Record of selected sectors/colors
 
 
 

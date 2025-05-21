@@ -63,7 +63,7 @@ export default function SectorEditor({ sectors, setSectors, onDone }) {
           </label>
 
           <div style={{ marginTop: "10px" }}>
-            <strong>Levels (0–5):</strong>
+            <strong>Levels (0-5):</strong>
             {[0, 1, 2, 3, 4, 5].map((levelIndex) => (
               <div key={levelIndex}>
                 {/* Level 0: image upload */}

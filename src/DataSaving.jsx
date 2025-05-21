@@ -1,10 +1,14 @@
 import React from "react";
 
-export default function DataSaving({ sectors, setSectors }) {
+export default function DataSaving({ sectors, setSectors, descriptions, setDescriptions }) {
 
-  //DownLoad json file
+
   const DownloadJson = () => {
-    const dataString = JSON.stringify(sectors, null, 2);
+    const sectorsAndDescriptions = {
+      sectors,
+      descriptions,
+    };
+    const dataString = JSON.stringify(sectorsAndDescriptions, null, 2);
     const blob = new Blob([dataString], { type: "json"});
     const url = URL.createObjectURL(blob);
 
@@ -17,7 +21,6 @@ export default function DataSaving({ sectors, setSectors }) {
 
   }
 
-  //UpLoad json file
   const UploadJson = (e) => {
 
     const file = e.target.files[0];
@@ -30,30 +33,24 @@ export default function DataSaving({ sectors, setSectors }) {
         const importedData = JSON.parse(event.target.result);
         if (Array.isArray(importedData)) {
           setSectors(importedData);
-          alert("Successful!");
+          alert("Successful！");
+        } else if(importedData.sectors && importedData.descriptions){
+          setSectors(importedData.sectors);
+          setDescriptions(importedData.descriptions);
+          alert("Successful！");
         } else {
-          alert("Erro");
+          alert("Error！");
         }
       } catch (error) {
-        alert("Failed");
+        alert("Something wrong！");
       }
     };
     reader.readAsText(file);
   }
 
+
   return (
-    // <div style={{ marginBottom: "1rem", textAlign: "center" }}>
-    //   <button onClick={DownloadJson}>Download JSON</button>
-    //   <label style={{ marginLeft: "1rem", cursor: "pointer" }}>
-    //     Upload JSON
-    //     <input
-    //       type="file"
-    //       accept="application/json"
-    //       onChange={UploadJson}
-    //       style={{ display: "inline-block", marginLeft: "0.5rem" }}
-    //     />
-    //   </label>
-    // </div>
+
     
     <div className="data-buttons">
       <button className= "button " 
